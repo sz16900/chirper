@@ -1,22 +1,10 @@
-<%= form_with(model: chirp, local: true) do |form| %>
-  <% if chirp.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(chirp.errors.count, "error") %> prohibited this chirp from being saved:</h2>
-
-      <ul>
-      <% chirp.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :chirp %>
-    <%= form.text_area :chirp %>
+<%= simple_form_for(@chirps) do |f|%>
+<%= f.error.notification%>
+<div class="fiel">
+  <div class="control">
+    <%= f.input :chirp, label: "Chirp about it", input_html: {class: "textarea "}, wrapper: false, label_html: {class: "label"}, placeholder: "Compose a new chirp..." %>
   </div>
+</div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<%= f.button :submit, class: "button is-info" %>
 <% end %>
