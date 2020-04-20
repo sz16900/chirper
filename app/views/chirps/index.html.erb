@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Chirps</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Chirp</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @chirps.each do |chirp| %>
+      <tr>
+        <td><%= chirp.chirp %></td>
+        <td><%= link_to 'Show', chirp %></td>
+        <td><%= link_to 'Edit', edit_chirp_path(chirp) %></td>
+        <td><%= link_to 'Destroy', chirp, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Chirp', new_chirp_path %>

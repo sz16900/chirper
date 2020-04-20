@@ -1,0 +1,2 @@
+class Chirp < ApplicationRecord
+end
