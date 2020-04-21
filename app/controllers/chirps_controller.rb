@@ -29,7 +29,7 @@ class ChirpsController < ApplicationController
 
     respond_to do |format|
       if @chirp.save
-        format.html { redirect_to @chirp, notice: 'Chirp was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Chirp was successfully created.' }
         format.json { render :show, status: :created, location: @chirp }
       else
         format.html { render :new }
