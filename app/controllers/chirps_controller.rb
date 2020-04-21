@@ -1,5 +1,6 @@
 class ChirpsController < ApplicationController
   before_action :set_chirp, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /chirps
   # GET /chirps.json
@@ -15,7 +16,7 @@ class ChirpsController < ApplicationController
 
   # GET /chirps/new
   def new
-    @chirp = Chirp.new
+    @chirp = current_user.chirps.build
   end
 
   # GET /chirps/1/edit
@@ -25,7 +26,7 @@ class ChirpsController < ApplicationController
   # POST /chirps
   # POST /chirps.json
   def create
-    @chirp = Chirp.new(chirp_params)
+    @chirp = current_user.chirps.build(chirp_params)
 
     respond_to do |format|
       if @chirp.save
